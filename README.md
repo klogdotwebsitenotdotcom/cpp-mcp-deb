@@ -4,11 +4,21 @@
 
 ```
 
-cd cpp-mcp && dpkg-buildpackage -us -uc
+mkdir ~/libmcp
 
-# Go to back and install the .deb
+# Debian does things a bit weird
 
-cd .. && dpkg-deb -I ../libcpp-mcp-dev_*.deb
+cd ~/libmcp/ && git clone https://github.com/klogdotwebsitenotdotcom/cpp-mcp-deb.git
+
+cd cpp-mcp-deb && dpkg-buildpackage -us -uc
+
+# Now debian create some weird mess in ../
+
+cd .. && dpkg-deb -I ./libcpp-mcp-dev_*.deb
+
+# Or just install it from the current directory
+
+dpkg-deb -I ../lib-mcp-dev_*.deb
 
 ```
 
