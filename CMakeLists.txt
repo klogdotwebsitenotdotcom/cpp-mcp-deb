@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.10)
 project(MCP VERSION 2024.11.05 LANGUAGES CXX)
 
 set(CMAKE_WARN_UNUSED_CLI YES)
-
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if (NOT XCODE AND NOT MSVC AND NOT CMAKE_BUILD_TYPE)
@@ -45,12 +44,13 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/common)
 # Add MCP library
 add_subdirectory(src)
 
-# Add examples
-add_subdirectory(examples)
+# Install the static library and headers
+install(TARGETS mcp
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+    PUBLIC_HEADER DESTINATION include
+)
 
-# Add test directory
-option(MCP_BUILD_TESTS "Build the tests" OFF)
-if(MCP_BUILD_TESTS)
-    enable_testing()
-    add_subdirectory(test)
-endif()
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ DESTINATION include)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/common/json.hpp ${CMAKE_CURRENT_SOURCE_DIR}/common/httplib.h ${CMAKE_CURRENT_SOURCE_DIR}/common/base64.hpp DESTINATION include/mcp) 
