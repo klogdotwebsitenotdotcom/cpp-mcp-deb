@@ -34,35 +34,23 @@ option(MCP_SSL "Enable SSL support" OFF)
 
 if(MCP_SSL)
     find_package(OpenSSL 3.0.0 COMPONENTS Crypto SSL REQUIRED)
-    include_directories(${OPENSSL_INCLUDE_DIR}) # before including cpp-httplib to avoid OpenSSL with lower version included
+    include_directories(${OPENSSL_INCLUDE_DIR}) # before including cpp-httplib to avoid OpenSSL with lower version included 
     message(STATUS "OpenSSL include directory: ${OPENSSL_INCLUDE_DIR}")
     add_compile_definitions(MCP_SSL CPPHTTPLIB_OPENSSL_SUPPORT)
 endif()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/common)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../cpp-httplib)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../nlohmann)
 
 # Add MCP library
 add_subdirectory(src)
 
-# Only configure the config file if it exists
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/cmake/mcpConfig.cmake.in")
-    include(CMakePackageConfigHelpers)
-    write_basic_package_version_file(
-        "${CMAKE_CURRENT_BINARY_DIR}/${TARGET}ConfigVersion.cmake"
-        VERSION ${PROJECT_VERSION}
-        COMPATIBILITY AnyNewerVersion
-    )
-    configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/cmake/mcpConfig.cmake.in"
-        "${CMAKE_CURRENT_BINARY_DIR}/mcpConfig.cmake"
-        @ONLY
-    )
-    install(FILES
-        "${CMAKE_CURRENT_BINARY_DIR}/mcpConfig.cmake"
-        "${CMAKE_CURRENT_BINARY_DIR}/${TARGET}ConfigVersion.cmake"
-        DESTINATION lib/cmake/${TARGET}
-    )
+# Add examples
+add_subdirectory(examples)
+
+# Add test directory
+option(MCP_BUILD_TESTS "Build the tests" OFF)
+if(MCP_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(test)
 endif()
