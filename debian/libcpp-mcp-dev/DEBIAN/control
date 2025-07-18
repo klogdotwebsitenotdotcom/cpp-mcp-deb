@@ -1,0 +1,11 @@
+Package: libcpp-mcp-dev
+Source: cpp-mcp
+Version: 2024.11.05-1
+Architecture: amd64
+Maintainer: K_log Televised - youtube klog.website.notdotcom@gmail.com
+Installed-Size: 5427
+Section: libs
+Priority: optional
+Homepage: https://github.com/klogdotwebsitenotdotcom/cpp-mcp
+Description: C++ implementation of Model Context Protocol (MCP)
+ C++ static library and headers for MCP protocol.

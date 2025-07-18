@@ -1,0 +1,15 @@
+4132c3fb3d6b213147f4f587533a8a6f  usr/include/mcp/base64.hpp
+51cdb3a9d6b28c3d27c8cbbfe69292b2  usr/include/mcp/httplib.h
+52a165cab48e04b88eccf018c4dfeb03  usr/include/mcp/json.hpp
+dac3ad709ab36a1625e8230f70c66f3d  usr/include/mcp_client.h
+076fc99666d3baa24c63db7fbc9593ad  usr/include/mcp_logger.h
+c80f1274959c237a78e767c905288121  usr/include/mcp_message.h
+14cf5e85a29859da790638a5ec0321e9  usr/include/mcp_resource.h
+959f6599f0672a4448692d47c63cf733  usr/include/mcp_server.h
+952150cf1e28ad7174617f15aa72ecbb  usr/include/mcp_sse_client.h
+5e66f5d32970706c846ad9707a9d26e6  usr/include/mcp_stdio_client.h
+44050ac0d7533678451137655441a36a  usr/include/mcp_thread_pool.h
+63e218af5bf147544f0a2d152317eafd  usr/include/mcp_tool.h
+90c0f08cde654de3ab2757fb3a1fb2aa  usr/lib/libmcp.a
+db044eb490998957a45621d7212c490d  usr/share/doc/libcpp-mcp-dev/changelog.Debian.gz
+642d03c53ed2171ca7fbebccf0f326cf  usr/share/doc/libcpp-mcp-dev/copyright
